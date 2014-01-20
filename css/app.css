@@ -8,9 +8,6 @@ body {
     padding: 0;
     font-family: 'Lato', sans-serif;
 }
-.input {
-    margin-bottom: 1.5em;
-}
 label {
     margin-bottom: .5em;
 }
@@ -55,15 +52,11 @@ label {
     padding: .5em;
     float: right;
     border: 1px solid #CCC;
-    border-width: 0 0 1px 1px;
     background: #EEE;
 }
 .panel-col {
     display: inline-block;
-    margin-right: 1em;
-}
-.panel-col:last-child {
-    margin: 0;
+    margin: .5em 1em .5em 1em;
 }
 #urlSubmit {
     width: 16px;
@@ -129,14 +122,8 @@ label {
     padding: 1em;
     text-align: right;
 }
-#attr{
-    text-decoration: none;
-    color: #333;
-}
-#aboutLink {
-    margin: .3em;
-    clear: right;
-    float: right;
+#extLinks {
+    margin-top: 1em;
 }
 #about {
     max-width: 640px;

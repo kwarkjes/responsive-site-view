@@ -51,6 +51,15 @@ angular.module('rsv.main', ['rsv.Devices', 'nimbleworks.elementSnapShot']).contr
     $scope.onSelectURL = function (url) {
         setSelectedURL(url);
     };
+    $scope.onAboutBtn = function(){
+        chrome.windows.create({
+            url: 'about.html',
+            type: 'popup'
+        });
+    };
+    $scope.getRotateTitle = function () {
+        return ($scope.selectedDevice.orientation) ? 'Rotate viewport' : 'This device does not rotate';
+    };
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         var selectedDeviceIndex = 0;
         if (request.selectedURL) {

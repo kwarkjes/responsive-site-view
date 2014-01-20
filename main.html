@@ -24,13 +24,15 @@
                         <select id="fieldDevice" class="input" ng-model="selectedDevice" ng-options="(device.width + 'x' + device.height + ' ' + device.name) for device in deviceList">
                             <option value="">Custom</option>
                         </select>
+                    </div>
+                    <div class="panel-col">
                         <label for="deviceWidth">Width</label>
                         <input id="deviceWidth" type="number" ng-model="selectedWidth" ng-change="onChangeWidthHeight()" />
                         <label for="deviceHeight">Height</label>
                         <input id="deviceHeight" type="number" ng-model="selectedHeight" ng-change="onChangeWidthHeight()" />
                     </div>
                     <div class="panel-col">
-                        <button id="btnRotate" ng-disabled="!selectedDevice.orientation" ng-click="onRotateBtn()" title="{{{true:'Rotate device', false:'This device does not rotate'}[selectedDevice.orientation]}}">
+                        <button id="btnRotate" title="{{ getRotateTitle() }}" ng-disabled="!selectedDevice.orientation" ng-click="onRotateBtn()" title="{{{true:'Rotate device', false:'This device does not rotate'}[selectedDevice.orientation]}}">
                             <span ng-show="!landscape">Landscape</span>
                             <span ng-show="landscape">Portrait</span>
                         </button>
@@ -44,7 +46,10 @@
                 </div>
             </div>
             <footer id="footer">
-                <a id="attr" href="http://nimbleworks.co.uk" target="_blank"><img src="img/nimbleworks.png" alt="NimbleWorks" /></a>
+                <a href ng-click="onAboutBtn()">About this extension</a>
+                <div id="extLinks">
+                    <a id="attr" href="http://nimbleworks.co.uk/responsive-site-view" target="_blank"><small>Responsive Site View by Nimbleworks LLP</small></a>
+                </div>
             </footer>
         </div>
     </body>
