@@ -95,11 +95,11 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
             });
         }
     });
-}).directive('rsvFrame', function ($rootScope) {
+}).directive('rsvFrame', function () {
     'use strict';
     return {
         restrict: 'E',
-        template: '<iframe id="webView" nim-element-snap-shot="captureWebView" nim-element-snap-shot-newwindow="true" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;" ng-src="{{ selectedURL }}" src="error.html"></iframe>'
+        template: '<iframe id="webView" nim-element-snap-shot="captureWebView" nim-element-snap-shot-newwindow="true" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;" ng-src="{{ selectedURL }}"></iframe>'
             + '<div id="loader" ng-show="loading">'
                 + '<div id="loader-msg"><p><img id="loader-spinner" src="img/reload_2.png" alt="" /></p><p>Loading...</p></div>'
             + '</div>',
@@ -132,61 +132,4 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
             }
         });
     };
-}).directive('nimCapture', function ($q, $timeout, $window, $location) {
-    'use strict';
-    return {
-        restrict: 'EA',
-        require: '?ngModel',
-        link: function (scope, element, attrs, ngModel) {
-            var targetEl = document.getElementById(attrs.nimCapture),
-                newWindow = attrs.nimCaptureNewwindow;
-            if (!targetEl) {
-                return;
-            }
-            function capture() {
-                var deferred = $q.defer();
-                chrome.windows.getCurrent(function (currentWin) {
-                    chrome.tabs.captureVisibleTab(function (dataSrc) {
-                        deferred.resolve(dataSrc);
-                    });
-                });
-                return deferred.promise;
-            }
-            function clipArea(dataSrc, width, height) {
-                var canvas = document.createElement('canvas'),
-                    context = canvas.getContext('2d'),
-                    imageObj = new Image(),
-                    deferred = $q.defer(),
-                    elPosition = getElementPosition(targetEl);
-                canvas.width = width;
-                canvas.height = height;
-                imageObj.onload = function () {
-                    context.drawImage(this, -elPosition.x, -elPosition.y);
-                    deferred.resolve(canvas.toDataURL());
-                };
-                imageObj.src = dataSrc;
-                return deferred.promise;
-            }
-            function getElementPosition(el) {
-                var obj = el.getBoundingClientRect();
-                return {
-                    x: obj.left + document.body.scrollLeft,
-                    y: obj.top + document.body.scrollTop
-                };
-            }
-            element.on('click', function () {
-                $window.location.hash = attrs.nimCapture;
-                capture().then(function (dataSrc) {
-                    return clipArea(dataSrc, targetEl.offsetWidth, targetEl.offsetHeight);
-                }).then(function (clippedSrc) {
-                    if (ngModel) {
-                        ngModel.$setViewValue(clippedSrc);
-                    }
-                    if (newWindow) {
-                        $window.open(clippedSrc);
-                    }
-                });
-            });
-        }
-    };
-});
+})
