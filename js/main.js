@@ -1,4 +1,4 @@
-angular.module('rsv.main', ['rsv.Devices', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout) {
+angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout) {
     'use strict';
     function setSelectedURL(url) {
         $scope.newURL = $scope.selectedURL = $sce.trustAsResourceUrl(url);

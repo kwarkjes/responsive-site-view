@@ -9,6 +9,7 @@
         <script src="js/lib/nim-element-snap-shot/src/nimElementSnapShot.js"></script>
         <script src="js/main.js"></script>
         <script src="js/Devices.js"></script>
+        <script src="js/filters.js"></script>
     </head>
     <body ng-app="rsv.main" ng-csp role="application">
         <div id="tab" ng-controller="mainController">
@@ -21,7 +22,7 @@
                     </div>
                     <div class="panel-col">
                         <label for="fieldDevice">View as:</label>
-                        <select id="fieldDevice" class="input" ng-model="selectedDevice" ng-options="(device.width + 'x' + device.height + ' ' + device.name) for device in deviceList">
+                        <select id="fieldDevice" class="input" ng-model="selectedDevice" ng-options="(device.width + 'x' + device.height + ' ' + device.name) for device in deviceList | byWidthHeight">
                             <option value="">Custom</option>
                         </select>
                     </div>
@@ -32,7 +33,7 @@
                         <input id="deviceHeight" type="number" ng-model="selectedHeight" ng-change="onChangeWidthHeight()" />
                     </div>
                     <div class="panel-col">
-                        <button id="btnRotate" title="{{ getRotateTitle() }}" ng-disabled="!selectedDevice.orientation" ng-click="onRotateBtn()" title="{{{true:'Rotate device', false:'This device does not rotate'}[selectedDevice.orientation]}}">
+                        <button id="btnRotate" title="{{ getRotateTitle() }}" ng-disabled="selectedDevice && !selectedDevice.orientation" ng-click="onRotateBtn()" title="{{{true:'Rotate device', false:'This device does not rotate'}[selectedDevice.orientation]}}">
                             <span ng-show="!landscape">Landscape</span>
                             <span ng-show="landscape">Portrait</span>
                         </button>
