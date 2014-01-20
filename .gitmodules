@@ -1,0 +1,3 @@
+[submodule "js/lib/nim-element-snap-shot"]
+	path = js/lib/nim-element-snap-shot
+	url = https://github.com/Nimbleworks/angularjs-element-snap-shot.git
