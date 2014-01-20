@@ -11,6 +11,14 @@ body {
 label {
     margin-bottom: .5em;
 }
+.group:after
+{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
 #popup {
     padding: 1em;
     min-width: 300px;
@@ -58,7 +66,7 @@ label {
     display: inline-block;
     margin: .5em 1em .5em 1em;
 }
-#urlSubmit {
+#urlReload {
     width: 16px;
     text-indent: 100px;
     overflow: hidden;
@@ -96,18 +104,12 @@ label {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
     text-align: center;
-    opacity: 0;
     border-top: 1px solid #AB4A9C;
     border-bottom: 1px solid #602D91;
     background: #EEE;
     -webkit-transition: all .66s;
     box-shadow: 0 3px 6px rgba(0,0,0,.5);
-}
-.loading #loader {
-    z-index: 1;
-    opacity: 1;
 }
 #loader-spinner {
     -webkit-animation-name: rotatortron;

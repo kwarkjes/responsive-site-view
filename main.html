@@ -13,12 +13,13 @@
     </head>
     <body ng-app="rsv.main" ng-csp role="application">
         <div id="tab" ng-controller="mainController">
-            <header id="tabHeader">
+            <header id="tabHeader" class="group">
                 <h1 id="tabTitle" class="title"><img id="logo" src="icon-48.png" alt="" />Responsive Site View</h1>
                 <div id="panel">
                     <div class="panel-col">
                         <label for="fieldUrl">URL:</label>
                         <input id="fieldUrl" class="input" name="url" type="url" ng-model="newURL" ng-blur="onSelectURL(newURL)" ng-enterkey="onSelectURL(newURL)" required />
+                        <input id="urlReload" name="submit" type="submit" value="Reload" ng-click="reloadURL()" />
                     </div>
                     <div class="panel-col">
                         <label for="fieldDevice">View as:</label>
@@ -42,7 +43,7 @@
                 </div>
             </header>
             <div id="main">
-                <div id="holder" class="loading" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;">
+                <div id="holder" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;">
                     <rsv-frame></rsv-frame>
                 </div>
             </div>
