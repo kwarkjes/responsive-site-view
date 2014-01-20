@@ -29,6 +29,7 @@ label {
 }
 #popup .input {
     width: 100%;
+    margin-bottom: 1em;
 }
 #popup .field {
     margin-bottom: 1em;
@@ -50,7 +51,6 @@ label {
 }
 #tabHeader {
     padding: 1em;
-    border-bottom: 1px solid #CCC;
 }
 #tabTitle {
     margin: 0 2em 1em 0;
