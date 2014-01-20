@@ -99,7 +99,7 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
     'use strict';
     return {
         restrict: 'E',
-        template: '<iframe id="webView" nim-element-snap-shot="captureWebView" nim-element-snap-shot-newwindow="true" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;" ng-src="{{ selectedURL }}"></iframe>'
+        template: '<iframe id="webView" nim-element-snap-shot="captureWebView" nim-element-snap-shot-newwindow="true" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;" ng-src="{{ selectedURL }}" src="error.html"></iframe>'
             + '<div id="loader" ng-show="loading">'
                 + '<div id="loader-msg"><p><img id="loader-spinner" src="img/reload_2.png" alt="" /></p><p>Loading...</p></div>'
             + '</div>',
