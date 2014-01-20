@@ -1,0 +1,145 @@
+@-webkit-keyframes rotatortron {
+    0% { -webkit-transform:rotate(0deg); }
+    10% { -webkit-transform:rotate(0deg); }
+    100% {-webkit-transform:rotate(360deg); }
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+.input {
+    margin-bottom: 1.5em;
+}
+label {
+    margin-bottom: .5em;
+}
+#popup {
+    padding: 1em;
+    min-width: 300px;
+    font-size: 82%;
+}
+#popup label {
+    display: block;
+}
+#popup .input {
+    width: 100%;
+}
+#popup .field {
+    margin-bottom: 1em;
+}
+#popupTitle {
+    margin: 0 0 1em;
+    font-size: 1.5em;
+}
+#popupForm {
+    padding: .5em;
+    background: #EEE;
+    border-radius: 6px;
+}
+#tab {
+    font-size: .8em;
+}
+#logo {
+    vertical-align: middle;
+}
+#tabTitle {
+    padding-left: .5em;
+    float: left;
+}
+.title {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+#panel {
+    padding: .5em;
+    float: right;
+    border: 1px solid #CCC;
+    border-width: 0 0 1px 1px;
+    background: #EEE;
+}
+.panel-col {
+    display: inline-block;
+    margin-right: 1em;
+}
+.panel-col:last-child {
+    margin: 0;
+}
+#urlSubmit {
+    width: 16px;
+    text-indent: 100px;
+    overflow: hidden;
+    border: none;
+    background: url(../img/reload_1.png) 50% 50% no-repeat;
+    cursor: pointer;
+}
+#main {
+    padding: 16px;
+    clear: both;
+    border-bottom: 1px solid #CCC;
+    background: url(../img/bg.png) 0 100% repeat-x;
+}
+#holder {
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border: 16px solid #333;
+    background: #FFF;
+    border-radius: 6px;
+    -webkit-transition: all .66s
+}
+#webView {
+    display: block;
+    border: none;
+    background: #FFF;
+    -webkit-transition: all .66s;
+}
+#webView::-webkit-scrollbar {
+    display: none;
+}
+#loader {
+    width: 100%;
+    padding: 1em 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    text-align: center;
+    opacity: 0;
+    border-top: 1px solid #AB4A9C;
+    border-bottom: 1px solid #602D91;
+    background: #EEE;
+    -webkit-transition: all .66s;
+    box-shadow: 0 3px 6px rgba(0,0,0,.5);
+}
+.loading #loader {
+    z-index: 1;
+    opacity: 1;
+}
+#loader-spinner {
+    -webkit-animation-name: rotatortron;
+    -webkit-animation-duration:2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:ease-in-out;
+}
+#loader-msg p {
+    margin: 0;
+}
+#footer {
+    padding: 1em;
+    text-align: right;
+}
+#attr{
+    text-decoration: none;
+    color: #333;
+}
+#aboutLink {
+    margin: .3em;
+    clear: right;
+    float: right;
+}
+#about {
+    max-width: 640px;
+    padding: 0 1.6em;
+    margin: auto;
+}

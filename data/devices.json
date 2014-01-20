@@ -1,0 +1,80 @@
+[
+    {
+        "name":"Nokia C3-01",
+        "width":240,
+        "height":320,
+        "orientation": false
+    },
+    {
+        "name":"Nexus 7",
+        "width":800,
+        "height":1280,
+        "orientation": true
+    },
+    {
+        "name":"iPhone 5",
+        "width":320,
+        "height":568,
+        "orientation": true
+    },
+	{
+		"name":"iPhone 1-4",
+		"width":320,
+		"height":460,
+		"orientation":true
+	},
+    {
+        "name":"iPad Generation 1-2",
+        "width":768,
+        "height":1024,
+        "orientation":true
+    },
+	{
+		"name":"Blackberry Curve 8529",
+		"width":320,
+		"height":240,
+		"orientation":false
+	},
+	{
+		"name":"HTC Desire S",
+		"width":320,
+		"height":533,
+		"orientation":true
+	},
+	{
+		"name":"HTC Desire",
+		"width":320,
+		"height":452,
+		"orientation":true
+	},
+	{
+		"name":"Kindle 5th Generation",
+		"width":600,
+		"height":706,
+		"orientation":false
+	},
+	{
+		"name":"Blackberry Bold 9900",
+		"width": 354,
+		"height": 206,
+		"orientation":false
+	},
+	{
+		"name":"Blackberry Playbook",
+		"width":600,
+		"height":1024,
+		"orientation":true
+	},
+	{
+		"name":"T-Mobile Pulse Mini",
+		"width":240,
+		"height":320,
+		"orientation":true
+	},
+	{
+		"name":"Samsung Galaxy S1-S2",
+		"width":320,
+		"height":533,
+		"orientation":true
+	}
+]

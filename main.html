@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Responsive Site View</title>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/app.css"/>
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/nimElementSnapShot.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/Devices.js"></script>
+    </head>
+    <body ng-app="rsv.main" ng-csp role="application">
+        <div id="tab" ng-controller="mainController">
+            <header id="tabHeader">
+                <h1 id="tabTitle" class="title"><img id="logo" src="icon-48.png" alt="" />Responsive Site View</h1>
+                <div id="panel">
+                    <div class="panel-col">
+                        <label for="fieldUrl">URL:</label>
+                        <input id="fieldUrl" class="input" name="url" type="url" ng-model="newURL" ng-blur="onSelectURL(newURL)" ng-enterkey="onSelectURL(newURL)" required />
+                    </div>
+                    <div class="panel-col">
+                        <label for="fieldDevice">View as:</label>
+                        <select id="fieldDevice" class="input" ng-model="selectedDevice" ng-options="(device.width + 'x' + device.height + ' ' + device.name) for device in deviceList">
+                            <option value="">Custom</option>
+                        </select>
+                        <label for="deviceWidth">Width</label>
+                        <input id="deviceWidth" type="number" ng-model="selectedWidth" ng-change="onChangeWidthHeight()" />
+                        <label for="deviceHeight">Height</label>
+                        <input id="deviceHeight" type="number" ng-model="selectedHeight" ng-change="onChangeWidthHeight()" />
+                    </div>
+                    <div class="panel-col">
+                        <button id="btnRotate" ng-disabled="!selectedDevice.orientation" ng-click="onRotateBtn()" title="{{{true:'Rotate device', false:'This device does not rotate'}[selectedDevice.orientation]}}">
+                            <span ng-show="!landscape">Landscape</span>
+                            <span ng-show="landscape">Portrait</span>
+                        </button>
+                        <button id="btnCapture" ng-click="captureWebView()" title="Take a snapshot">Capture</button>
+                    </div>
+                </div>
+            </header>
+            <div id="main">
+                <div id="holder" class="loading" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;">
+                    <rsv-frame></rsv-frame>
+                </div>
+            </div>
+            <footer id="footer">
+                <a id="attr" href="http://nimbleworks.co.uk" target="_blank"><img src="img/nimbleworks.png" alt="NimbleWorks" /></a>
+            </footer>
+        </div>
+    </body>
+</html>
