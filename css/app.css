@@ -48,7 +48,12 @@ label {
 #logo {
     vertical-align: middle;
 }
+#tabHeader {
+    padding: 1em;
+    border-bottom: 1px solid #CCC;
+}
 #tabTitle {
+    margin: 0 2em 1em 0;
     padding-left: .5em;
     float: left;
 }
@@ -58,9 +63,9 @@ label {
 }
 #panel {
     padding: .5em;
-    float: right;
-    border: 1px solid #CCC;
+    float: left;
     background: #EEE;
+    border-radius: 1em;
 }
 .panel-col {
     display: inline-block;
