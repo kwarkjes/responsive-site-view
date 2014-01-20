@@ -54,9 +54,15 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
     $scope.onSelectURL = function (url) {
         setSelectedURL(url);
     };
-    $scope.onAboutBtn = function(){
+    $scope.onAboutBtn = function () {
         chrome.windows.create({
             url: 'about.html',
+            type: 'popup'
+        });
+    };
+    $scope.onDeniedBtn = function () {
+        chrome.windows.create({
+            url: 'denied.html',
             type: 'popup'
         });
     };
@@ -95,12 +101,9 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
         restrict: 'E',
         template: '<iframe id="webView" nim-element-snap-shot="captureWebView" nim-element-snap-shot-newwindow="true" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;" ng-src="{{ selectedURL }}"></iframe>'
             + '<div id="loader" ng-show="loading">'
-                + '<div id="loader-msg"><p><img id="loader-spinner" src="img/reload_2.png" alt="" /></p><p>Loading...</p><p><a  ng-click="onDeniedBtn()">Click here if the page fails to load</a></p></div>'
+                + '<div id="loader-msg"><p><img id="loader-spinner" src="img/reload_2.png" alt="" /></p><p>Loading...</p></div>'
             + '</div>',
         link: function (scope, element, attrs) {
-            element.bind('load', function (evt) {
-                scope.$apply(attrs.rsvFrameLoaded);
-            });
             scope.reloadURL = function () {
                 scope.$apply(scope.loading = true);
                 document.getElementById('webView').src = document.getElementById('webView').src;
@@ -110,6 +113,9 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
                 element.find('iframe').bind('load', function (evt) {
                     scope.$apply(scope.loading = false);
                 });
+                element.find('iframe')[0].onload = function (evt) {
+                    scope.$apply(scope.loading = false);
+                };
             }
             setLoadEvent();
         }
