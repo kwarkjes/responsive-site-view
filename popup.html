@@ -4,6 +4,7 @@
         <script src="js/lib/angular.min.js"></script>
         <script src="js/popup.js"></script>
         <script src="js/Devices.js" type="text/javascript"></script>
+        <script src="js/filters.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
         <link href="css/app.css" rel="stylesheet" />
     </head>
@@ -13,7 +14,7 @@
         <label for="fieldUrl">URL:</label>
         <input id="fieldUrl" class="input" name="url" type="url" ng-model="selectedURL" required />
         <label for="fieldDevice">View as:</label>
-        <select id="fieldDevice" class="input" ng-model="selectedDeviceIndex" ng-options="deviceList.indexOf(device) as (device.width + 'x' + device.height + ' ' + device.name) for device in deviceList">
+        <select id="fieldDevice" class="input" ng-model="selectedDeviceIndex" ng-options="deviceList.indexOf(device) as (device.width + 'x' + device.height + ' ' + device.name) for device in deviceList | byWidthHeight">
             <option value="">Choose device</option>
         </select>
         <button class="btn" ng-click="selectDevice()">Let's see it</button>

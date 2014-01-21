@@ -1,8 +1,9 @@
-angular.module('rsv.popup', ['rsv.Devices']).controller('popupController', function ($scope, Devices) {
+angular.module('rsv.popup', ['rsv.Devices', 'rsv.filters']).controller('popupController', function ($scope, Devices) {
     $scope.selectedDeviceIndex = 0;
     $scope.selectedURL = '';
+    $scope.deviceList = [];
     Devices.getDeviceList().then(function (response) {
-        $scope.deviceList = response.data;
+        $scope.deviceList = response;
     });
     chrome.tabs.getSelected(null, function (tab) {
         if (!tab.url.match(/chrome-extension:\/\//)) {
