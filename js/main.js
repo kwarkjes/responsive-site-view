@@ -45,7 +45,6 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
         rotateDevice();
     };
     $scope.onCaptureBtn = function () {
-        console.log('btn');
         if($scope.selectedDevice.height > window.innerHeight || $scope.selectedDevice.width > window.innerWidth) {
             alert('The device you have selected has a viewport bigger than the browser window and therefore will be clipped.');
         }
@@ -67,7 +66,10 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
         });
     };
     $scope.getRotateTitle = function () {
-        return ($scope.selectedDevice.orientation) ? 'Rotate viewport' : 'This device does not rotate';
+        if ($scope.selectedDevice) {
+            return ($scope.selectedDevice.orientation) ? 'Rotate viewport' : 'This device does not rotate';
+        }
+        return '';
     };
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         var selectedDeviceIndex = 0;

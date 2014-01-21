@@ -72,7 +72,10 @@ label {
 }
 .panel-col {
     display: inline-block;
-    margin: .5em 1em .5em 1em;
+    margin: .5em;
+}
+.inputInt {
+    width: 4em;
 }
 #urlReload {
     width: 16px;

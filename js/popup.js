@@ -25,10 +25,12 @@ angular.module('rsv.popup', ['rsv.Devices']).controller('popupController', funct
         chrome.tabs.create({
             url: 'main.html'
         }, function (tab) {
-            chrome.tabs.sendMessage(tab.id, {
-                deviceList: $scope.deviceList,
-                selectedDeviceIndex: $scope.selectedDeviceIndex,
-                selectedURL: $scope.selectedURL
+            chrome.tabs.onUpdated.addListener(function (tabId) {
+                chrome.tabs.sendMessage(tab.id, {
+                    deviceList: $scope.deviceList,
+                    selectedDeviceIndex: $scope.selectedDeviceIndex,
+                    selectedURL: $scope.selectedURL
+                });
             });
         });
     };

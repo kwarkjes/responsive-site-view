@@ -28,10 +28,10 @@
                         </select>
                     </div>
                     <div class="panel-col">
-                        <label for="deviceWidth">Width</label>
-                        <input id="deviceWidth" type="number" ng-model="selectedWidth" ng-change="onChangeWidthHeight()" />
-                        <label for="deviceHeight">Height</label>
-                        <input id="deviceHeight" type="number" ng-model="selectedHeight" ng-change="onChangeWidthHeight()" />
+                        <label for="deviceWidth"><abbr title="width">w</abbr></label>
+                        <input id="deviceWidth" type="number" title="width" class="inputInt" ng-model="selectedWidth" ng-change="onChangeWidthHeight()" />
+                        <label for="deviceHeight"><abbr title="height">h</abbr></label>
+                        <input id="deviceHeight" type="number" title="height" class="inputInt" ng-model="selectedHeight" ng-change="onChangeWidthHeight()" />
                     </div>
                     <div class="panel-col">
                         <button id="btnRotate" title="{{ getRotateTitle() }}" ng-disabled="selectedDevice && !selectedDevice.orientation" ng-click="onRotateBtn()" title="{{{true:'Rotate device', false:'This device does not rotate'}[selectedDevice.orientation]}}">
