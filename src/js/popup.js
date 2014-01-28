@@ -24,7 +24,7 @@ angular.module('rsv.popup', ['rsv.Devices', 'rsv.filters']).controller('popupCon
     });
     $scope.selectDevice = function () {
         chrome.tabs.create({
-            url: 'main.html'
+            url: 'templates/main.html'
         }, function (tab) {
             chrome.tabs.onUpdated.addListener(function (tabId) {
                 chrome.tabs.sendMessage(tab.id, {
