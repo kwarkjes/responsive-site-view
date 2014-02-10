@@ -20,14 +20,15 @@ angular.module('rsv.Devices', []).factory('Devices', function ($http, $q) {
             return [];
         });
     }
-    storedList = angular.fromJson(localStorage.deviceList);
-    if (storedList && storedList.date && storedList.devices && (new Date() - new Date(storedList.date)) < oneDay) {
-        deviceList = $q.when(storedList.devices);
-    } else {
-        deviceList = requestDeviceList();
-    }
+
     return {
         getDeviceList: function () {
+            storedList = angular.fromJson(localStorage.deviceList);
+            if (storedList && storedList.date && storedList.devices && (new Date() - new Date(storedList.date)) < oneDay) {
+                deviceList = $q.when(storedList.devices);
+            } else {
+                deviceList = requestDeviceList();
+            }
             return deviceList;
         }
     };
