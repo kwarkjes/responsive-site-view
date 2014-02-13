@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Responsive Site View",
     "description": "View responsive websites at the dimensions of real device screens, capture screenshots for your portfolio.",
-    "version": "0.5",
+    "version": "0.5.5",
     "minimum_chrome_version": "23",
     "icons": {
         "16": "icon-16.png",

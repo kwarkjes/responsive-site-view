@@ -1,0 +1,16 @@
+{
+    "name": "responsive-site-view",
+    "version": "0.5.5",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Nimbleworks/responsive-site-view"
+    },
+    "devDependencies": {
+        "grunt": "~0.4",
+        "karma": "~0.10.9",
+        "grunt-karma": "0.6"
+    },
+    "scripts": {
+        "test": "grunt test"
+    }
+}
