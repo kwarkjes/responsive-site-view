@@ -1,4 +1,4 @@
-angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout) {
+angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout) {
     'use strict';
     function setSelectedURL(url) {
         if (url && url.toString()) {
@@ -121,17 +121,5 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
             }
             setLoadEvent();
         }
-    };
-}).directive('nimEnterkey', function () {
-    'use strict';
-    return function (scope, element, attrs) {
-        element.bind("keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function () {
-                    scope.$eval(attrs.ngEnterkey);
-                });
-                event.preventDefault();
-            }
-        });
     };
 });

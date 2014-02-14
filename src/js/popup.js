@@ -1,8 +1,8 @@
-angular.module('rsv.popup', ['rsv.Devices', 'rsv.filters']).controller('popupController', function ($scope, Devices) {
+angular.module('rsv.popup', ['rsv.devicesService', 'rsv.byWidthHeightFilter']).controller('popupController', function ($scope, devicesService) {
     $scope.selectedDeviceIndex = 0;
     $scope.selectedURL = '';
     $scope.deviceList = [];
-    Devices.getDeviceList().then(function (response) {
+    devicesService.getDeviceList().then(function (response) {
         $scope.deviceList = response;
     });
     chrome.tabs.getSelected(null, function (tab) {

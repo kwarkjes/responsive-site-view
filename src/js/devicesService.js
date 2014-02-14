@@ -1,4 +1,4 @@
-angular.module('rsv.Devices', []).factory('Devices', function ($http, $q) {
+angular.module('rsv.devicesService', []).factory('devicesService', function ($http, $q) {
     var deviceList, storedList, oneDay;
     deviceList = [];
     oneDay = 60 * 60 * 1000 * 24;

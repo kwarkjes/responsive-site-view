@@ -1,4 +1,4 @@
-describe('Device', function () {
+describe('devices service', function () {
     var Devices, $http, $httpBackend, $rootScope, deviceData, devicesURL;
     devicesURL = 'https://raw.github.com/Nimbleworks/device-browser-viewports/master/devices.json';
     deviceData = [
@@ -21,9 +21,9 @@ describe('Device', function () {
             "orientation": true
         }
     ];
-    beforeEach(module('rsv.Devices'));
+    beforeEach(module('rsv.devicesService'));
     beforeEach(inject(function ($injector, _$http_, _$httpBackend_, _$rootScope_) {
-        Devices = $injector.get('Devices');
+        Devices = $injector.get('devicesService');
         $http = _$http_;
         $httpBackend = _$httpBackend_;
         $rootScope = _$rootScope_;

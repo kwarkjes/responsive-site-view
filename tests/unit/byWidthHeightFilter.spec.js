@@ -1,6 +1,6 @@
-describe('filter byWidthHeight', function () {
+describe('byWidthHeightFilter', function () {
     var filterByWidthHeight;
-    beforeEach(module('rsv.filters'));
+    beforeEach(module('rsv.byWidthHeightFilter'));
     beforeEach(inject(function ($injector) {
         filterByWidthHeight = $injector.get('byWidthHeightFilter');
     }));
