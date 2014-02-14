@@ -10,4 +10,4 @@ app.module('nimbleworks.enterkey').directive('nimEnterkey', function () {
             }
         });
     };
-})
+});

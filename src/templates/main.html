@@ -8,7 +8,7 @@
         <script src="../js/lib/angular.min.js"></script>
         <script src="../js/lib/nim-element-snap-shot/src/nimElementSnapShot.js"></script>
         <script src="../js/main.js"></script>
-        <!--<script src="../js/Devices.js"></script>-->
+        <script src="../js/webViewDirective.js"></script>
         <script src="../js/byWidthHeightFilter.js"></script>
     </head>
     <body ng-app="rsv.main" ng-csp role="application">
@@ -44,7 +44,7 @@
             </header>
             <div id="main">
                 <div id="holder" style="width: {{ selectedWidth }}px; height:{{ selectedHeight }}px;">
-                    <rsv-frame></rsv-frame>
+                    <rsv-web-view></rsv-web-view>
                 </div>
                 <div id="holder-foot"><a href ng-click="onDeniedBtn()">Page not loading?</a></div>
             </div>
