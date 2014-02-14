@@ -1,7 +1,7 @@
 angular.module('rsv.filters', []).filter('byWidthHeight', function () {
     'use strict';
     return function (input) {
-        return input.sort(function(a, b) {
+        return input.sort(function (a, b) {
             if (a.width === b.width) {
                 return a.height - b.height;
             }
