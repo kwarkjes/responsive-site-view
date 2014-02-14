@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Nimbleworks/responsive-site-view.png?branch=master)](https://travis-ci.org/Nimbleworks/responsive-site-view)
 responsive-site-view
 ====================
 
