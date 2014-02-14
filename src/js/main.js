@@ -122,7 +122,7 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
             setLoadEvent();
         }
     };
-}).directive('ngEnterkey', function () {
+}).directive('nimEnterkey', function () {
     'use strict';
     return function (scope, element, attrs) {
         element.bind("keypress", function (event) {
@@ -134,4 +134,4 @@ angular.module('rsv.main', ['rsv.Devices', 'rsv.filters', 'nimbleworks.elementSn
             }
         });
     };
-})
+});
