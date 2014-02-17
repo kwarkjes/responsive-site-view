@@ -23,4 +23,4 @@ angular.module('rsv.webView', []).directive('rsvWebView', function () {
             setLoadEvent();
         }
     };
-})
+});

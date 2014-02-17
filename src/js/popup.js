@@ -1,8 +1,8 @@
-angular.module('rsv.popup', ['rsv.devicesService', 'rsv.byWidthHeightFilter']).controller('popupController', function ($scope, devicesService) {
+angular.module('rsv.popup', ['rsv.devicesService', 'rsv.byWidthHeightFilter', 'rsv.chromeApiService']).controller('popupController', function ($scope, devicesService, chromeApiService) {
     $scope.selectedDeviceIndex = 0;
     $scope.selectedURL = '';
     $scope.deviceList = [];
-    devicesService.getDeviceList().then(function (response) {
+    devicesService.get().then(function (response) {
         $scope.deviceList = response;
     });
     chrome.tabs.getSelected(null, function (tab) {
@@ -23,11 +23,11 @@ angular.module('rsv.popup', ['rsv.devicesService', 'rsv.byWidthHeightFilter']).c
         }
     });
     $scope.selectDevice = function () {
-        chrome.tabs.create({
+        chromeApiService.tabs.create({
             url: 'templates/main.html'
-        }, function (tab) {
-            chrome.tabs.onUpdated.addListener(function (tabId) {
-                chrome.tabs.sendMessage(tab.id, {
+        }, function () {
+            chromeApiService.tabs.onUpdated.addListener(function (tabId) {
+                chromeApiService.tabs.sendMessage(tabId, {
                     deviceList: $scope.deviceList,
                     selectedDeviceIndex: $scope.selectedDeviceIndex,
                     selectedURL: $scope.selectedURL

@@ -1,4 +1,4 @@
-angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout) {
+angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.chromeApiService', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout, chromeApiService) {
     'use strict';
     function setSelectedURL(url) {
         if (url && url.toString()) {
@@ -71,7 +71,7 @@ angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'nimblewor
         }
         return '';
     };
-    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    chromeApiService.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         var selectedDeviceIndex = 0;
         if (request.selectedURL) {
             $scope.$apply(function () {
