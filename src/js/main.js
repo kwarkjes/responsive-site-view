@@ -54,13 +54,13 @@ angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.chrom
         setSelectedURL(url);
     };
     $scope.onAboutBtn = function () {
-        chrome.windows.create({
+        chromeApiService.windows.create({
             url: 'templates/about.html',
             type: 'popup'
         });
     };
     $scope.onDeniedBtn = function () {
-        chrome.windows.create({
+        chromeApiService.windows.create({
             url: 'templates/denied.html',
             type: 'popup'
         });
