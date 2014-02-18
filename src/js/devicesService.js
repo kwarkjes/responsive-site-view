@@ -2,14 +2,12 @@ angular.module('rsv.devicesService', ['rsv.chromeApiService']).factory('devicesS
     function isOld(data) {
         var oneDay;
         oneDay = 60 * 60 * 1000 * 24;
-        return (!data.date || (new Date() - new Date(data.date)) > oneDay);
+        return (!data || !data.date || (new Date() - new Date(data.date)) > oneDay);
     }
     function storeDevices(data) {
         return chromeApiService.storage.local.set({
-            devicelist: {
-                date: new Date(),
-                devices: data
-            }
+            date: new Date(),
+            devices: data
         });
     }
     function getStoredDevices() {
