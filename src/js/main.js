@@ -1,7 +1,7 @@
-angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.chromeApiService', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $timeout, chromeApiService) {
+angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devicesService', 'rsv.chromeApiService', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $location, $timeout, byWidthHeightFilter, chromeApiService, devicesService) {
     'use strict';
     function setSelectedURL(url) {
-        if (url && url.toString()) {
+        if (url && url.toString) {
             url = url.toString();
         }
         $scope.newURL = $scope.selectedURL =  $sce.trustAsResourceUrl(url);
@@ -18,19 +18,22 @@ angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.chrom
             });
         });
     }
-    $scope.selectedURL = '';
-    $scope.deviceList = [];
-    if (sessionStorage.deviceList) {
-        $scope.deviceList = angular.fromJson(sessionStorage.deviceList);
+    function init() {
+        var urlParam;
+        urlParam = sessionStorage.selectedURL || $location.search().url;
+        setSelectedURL(urlParam);
+        $scope.deviceList = [];
+        $scope.selectedWidth = 320;
+        $scope.selectedHeight = 480;
+        devicesService.get().then(function (data) {
+            var selectedDeviceIndex;
+            $scope.deviceList = byWidthHeightFilter(data);
+            selectedDeviceIndex = sessionStorage.selectedDeviceIndex || $location.search().device || 0;
+            $scope.selectedDevice = $scope.deviceList[selectedDeviceIndex];
+        });
     }
-    if (sessionStorage.selectedDeviceIndex && $scope.deviceList[sessionStorage.selectedDeviceIndex]) {
-        $scope.selectedDevice = $scope.deviceList[sessionStorage.selectedDeviceIndex];
-    } else {
-        $scope.selectedDevice = $scope.deviceList[0];
-    }
-    if (sessionStorage.selectedURL) {
-        setSelectedURL(sessionStorage.selectedURL);
-    }
+    init();
+
     $scope.$watch('selectedDevice', function () {
         if ($scope.selectedDevice) {
             sessionStorage.selectedDeviceIndex = $scope.deviceList.indexOf($scope.selectedDevice);
@@ -72,28 +75,9 @@ angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.chrom
         return '';
     };
     chromeApiService.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-        var selectedDeviceIndex = 0;
-        if (request.selectedURL) {
-            $scope.$apply(function () {
-                setSelectedURL(request.selectedURL);
-            });
-        }
         if (request.getSelectedURL) {
             sendResponse({
                 selectedURL: $scope.selectedURL.toString()
-            });
-        }
-        if (request.deviceList) {
-            if (request.selectedDeviceIndex) {
-                if (request.deviceList[request.selectedDeviceIndex]) {
-                    selectedDeviceIndex = request.selectedDeviceIndex;
-                }
-            }
-            $scope.$apply(function () {
-                $scope.deviceList = request.deviceList;
-                $scope.selectedDevice = $scope.deviceList[selectedDeviceIndex];
-                sessionStorage.deviceList = angular.toJson($scope.deviceList);
-                sessionStorage.selectedDeviceIndex = selectedDeviceIndex;
             });
         }
     });

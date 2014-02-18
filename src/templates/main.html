@@ -11,6 +11,7 @@
         <script src="../js/webViewDirective.js"></script>
         <script src="../js/byWidthHeightFilter.js"></script>
         <script src="../js/chromeApiService.js"></script>
+        <script src="../js/devicesService.js"></script>
     </head>
     <body ng-app="rsv.main" ng-csp role="application">
         <div id="tab" ng-controller="mainController">
@@ -24,7 +25,7 @@
                     </div>
                     <div class="panel-col">
                         <label for="fieldDevice">View as:</label>
-                        <select id="fieldDevice" class="input" ng-model="selectedDevice" ng-options="(device.width + 'x' + device.height + ' ' + device.name) for device in deviceList | byWidthHeight">
+                        <select id="fieldDevice" class="input" ng-model="selectedDevice" ng-options="(device.width + 'x' + device.height + ' ' + device.name) for device in deviceList">
                             <option value="">Custom</option>
                         </select>
                     </div>

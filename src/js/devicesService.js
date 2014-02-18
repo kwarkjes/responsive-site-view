@@ -1,14 +1,11 @@
 angular.module('rsv.devicesService', ['rsv.chromeApiService']).factory('devicesService', function ($http, $q, chromeApiService) {
-    var deviceList;
-    deviceList = [];
-
     function isOld(data) {
         var oneDay;
         oneDay = 60 * 60 * 1000 * 24;
         return (!data.date || (new Date() - new Date(data.date)) > oneDay);
     }
     function storeDevices(data) {
-        return chromeApiService.storage.sync.set({
+        return chromeApiService.storage.local.set({
             devicelist: {
                 date: new Date(),
                 devices: data
@@ -18,7 +15,7 @@ angular.module('rsv.devicesService', ['rsv.chromeApiService']).factory('devicesS
     function getStoredDevices() {
         var deferred;
         deferred = $q.defer();
-        chromeApiService.storage.sync.get(function (data) {
+        chromeApiService.storage.local.get(function (data) {
             deferred.resolve(data);
         });
         return deferred.promise;
