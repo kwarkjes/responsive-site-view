@@ -13,7 +13,7 @@
     <div id="popup" ng-controller="popupController">
         <h1 id="popupTitle" class="title"><img id="logo" src="../icon-48.png" alt="" />Responsive Site View</h1>
         <label for="fieldUrl">URL:</label>
-        <input id="fieldUrl" class="input" name="url" type="url" ng-model="selectedURL" required />
+        <input id="fieldUrl" class="input" name="url" type="text" ng-model="selectedURL" required />
         <label for="fieldDevice">View as:</label>
         <select id="fieldDevice" class="input" ng-model="selectedDeviceIndex" ng-options="deviceList.indexOf(device) as (device.width + 'x' + device.height + ' ' + device.name) for device in deviceList | byWidthHeight">
             <option value="">Choose device</option>

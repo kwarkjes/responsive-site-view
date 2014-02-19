@@ -1,8 +1,13 @@
 angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devicesService', 'rsv.chromeApiService', 'nimbleworks.enterkey', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $location, $timeout, $filter, chromeApiService, devicesService) {
     'use strict';
     function setSelectedURL(url) {
+        var urlArr;
         if (url && url.toString) {
             url = url.toString();
+            urlArr = url.split('//');
+            if (urlArr.length === 1) {
+                url = 'http://' + url;
+            }
         }
         $scope.newURL = $scope.selectedURL =  $sce.trustAsResourceUrl(url);
         sessionStorage.selectedURL = url;
