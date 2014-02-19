@@ -1,4 +1,4 @@
-angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devicesService', 'rsv.chromeApiService', 'nimbleworks.enterkey', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $location, $timeout, byWidthHeightFilter, chromeApiService, devicesService) {
+angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devicesService', 'rsv.chromeApiService', 'nimbleworks.enterkey', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $location, $timeout, $filter, chromeApiService, devicesService) {
     'use strict';
     function setSelectedURL(url) {
         if (url && url.toString) {
@@ -27,7 +27,7 @@ angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devic
         $scope.selectedHeight = 480;
         devicesService.get().then(function (data) {
             var selectedDeviceIndex;
-            $scope.deviceList = byWidthHeightFilter(data);
+            $scope.deviceList = $filter('byWidthHeight')(data);
             selectedDeviceIndex = sessionStorage.selectedDeviceIndex || $location.search().device || 0;
             $scope.selectedDevice = $scope.deviceList[selectedDeviceIndex];
         });

@@ -1,22 +1,9 @@
 angular.module('rsv.devicesService', ['rsv.chromeApiService']).factory('devicesService', function ($http, $q, chromeApiService) {
-    function isOld(data) {
+    'use strict';
+    function isOld(date) {
         var oneDay;
         oneDay = 60 * 60 * 1000 * 24;
-        return (!data || !data.date || (new Date() - new Date(data.date)) > oneDay);
-    }
-    function storeDevices(data) {
-        return chromeApiService.storage.local.set({
-            date: new Date(),
-            devices: data
-        });
-    }
-    function getStoredDevices() {
-        var deferred;
-        deferred = $q.defer();
-        chromeApiService.storage.local.get(function (data) {
-            deferred.resolve(data);
-        });
-        return deferred.promise;
+        return (!date || (new Date() - new Date(date)) > oneDay);
     }
     function requestDevices() {
         var request = $http({
@@ -36,19 +23,38 @@ angular.module('rsv.devicesService', ['rsv.chromeApiService']).factory('devicesS
             return [];
         });
     }
-
+    function storeDevices(data) {
+        return chromeApiService.storage.local.set({
+            date: new Date(),
+            devices: data
+        });
+    }
+    function getStoredDevices() {
+        var deferred;
+        deferred = $q.defer();
+        chromeApiService.storage.local.get(function (response) {
+            if (response && response.date && response.devices) {
+                if (isOld(response.date)) {
+                    deferred.reject('Data out of date');
+                } else {
+                    deferred.resolve(response.devices);
+                }
+            } else {
+                deferred.reject('No stored data');
+            }
+        });
+        return deferred.promise;
+    }
     return {
         get: function () {
             var deferred = $q.defer();
-            getStoredDevices().then(function (data) {
-                if (isOld(data)) {
-                    requestDevices().then(function (response) {
-                        storeDevices(response);
-                        deferred.resolve(response);
-                    });
-                } else {
-                    deferred.resolve(data);
-                }
+            getStoredDevices().then(function (response) {
+                deferred.resolve(response);
+            }, function () {
+                requestDevices().then(function (response) {
+                    storeDevices(response);
+                    deferred.resolve(response);
+                });
             });
             return deferred.promise;
         }
