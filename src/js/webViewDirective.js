@@ -16,9 +16,6 @@ angular.module('rsv.webView', []).directive('rsvWebView', function () {
                 element.find('iframe').bind('load', function (evt) {
                     scope.$apply(scope.loading = false);
                 });
-                element.find('iframe')[0].onload = function (evt) {
-                    scope.$apply(scope.loading = false);
-                };
             }
             setLoadEvent();
         }
