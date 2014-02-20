@@ -1,5 +1,15 @@
 angular.module('rsv.chromeApiService', []).factory('chromeApiService', function () {
+    var mockTab;
+    mockTab = {
+        id: 1,
+        url: 'http://test.com'
+    };
     return {
+        configMock: {
+            tab: function () {
+                return mockTab;
+            }
+        },
         storage: {
             local: {
                 get: function (callback) {
@@ -13,6 +23,12 @@ angular.module('rsv.chromeApiService', []).factory('chromeApiService', function 
                     sessionStorage.clear();
                 }
             }
+        },
+        tabs: {
+            getSelected: function (windowID, callback) {
+                callback(mockTab);
+            },
+            create: function () {}
         }
     };
 });
