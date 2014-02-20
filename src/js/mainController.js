@@ -1,4 +1,4 @@
-angular.module('rsv.main', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devicesService', 'rsv.chromeApiService', 'nimbleworks.enterkey', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $location, $timeout, $filter, chromeApiService, devicesService) {
+angular.module('rsv.mainController', ['rsv.byWidthHeightFilter', 'rsv.webView', 'rsv.devicesService', 'rsv.chromeApiService', 'nimbleworks.enterkey', 'nimbleworks.elementSnapShot']).controller('mainController', function ($scope, $sce, $location, $timeout, $filter, chromeApiService, devicesService) {
     'use strict';
     function setSelectedURL(url) {
         var urlArr;

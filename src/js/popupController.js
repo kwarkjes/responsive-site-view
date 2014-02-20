@@ -1,4 +1,4 @@
-angular.module('rsv.popup', ['rsv.devicesService', 'rsv.byWidthHeightFilter', 'rsv.chromeApiService']).controller('popupController', function ($scope, devicesService, chromeApiService) {
+angular.module('rsv.popupController', ['rsv.devicesService', 'rsv.byWidthHeightFilter', 'rsv.chromeApiService']).controller('popupController', function ($scope, devicesService, chromeApiService) {
     $scope.selectedDeviceIndex = 0;
     $scope.selectedURL = '';
     $scope.deviceList = [];
