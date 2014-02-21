@@ -37,7 +37,6 @@ angular.module('rsv.mainController', ['rsv.byWidthHeightFilter', 'rsv.webView', 
             $scope.selectedDevice = $scope.deviceList[selectedDeviceIndex];
         });
     }
-    init();
 
     $scope.$watch('selectedDevice', function () {
         if ($scope.selectedDevice) {
@@ -86,4 +85,6 @@ angular.module('rsv.mainController', ['rsv.byWidthHeightFilter', 'rsv.webView', 
             });
         }
     });
+
+    init();
 });

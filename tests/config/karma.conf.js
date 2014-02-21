@@ -5,7 +5,7 @@ module.exports = function (config) {
         files: [
             'src/js/lib/angular.min.js',
             'tests/lib/**.js',
-            'src/js/**.js',
+            'src/js/**/**.js',
             'tests/unit/**.js',
             'tests/mocks/**.js'
         ],

@@ -10,6 +10,11 @@ angular.module('rsv.chromeApiService', []).factory('chromeApiService', function 
                 return mockTab;
             }
         },
+        runtime: {
+            onMessage: {
+                addListener: function () {}
+            }
+        },
         storage: {
             local: {
                 get: function (callback) {
@@ -29,6 +34,6 @@ angular.module('rsv.chromeApiService', []).factory('chromeApiService', function 
                 callback(mockTab);
             },
             create: function () {}
-        }
+        },
     };
 });
