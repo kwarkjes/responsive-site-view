@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Nimbleworks/responsive-site-view.png?branch=master)](https://travis-ci.org/Nimbleworks/responsive-site-view)
-responsive-site-view
+Responsive Site View
 ====================
 
 A Chrome extension for taking screenshots of websites at various mobile device viewport sizes. Available from the [Chrome Store](https://chrome.google.com/webstore/detail/responsive-site-view/igfgkigklekkapmkhianeahnkfddkjbm).
